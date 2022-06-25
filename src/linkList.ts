@@ -1,4 +1,3 @@
-
 class treeNode<T> {
 	public next: treeNode<T> | null = null;
 	public prev: treeNode<T> | null = null;
@@ -54,7 +53,7 @@ class LinkedList<T>{
   
 	public search(comparator: (data: T) => boolean): treeNode<T> | null {
 	  const checkNext = (node: treeNode<T>): treeNode<T> | null => {
-		if (comparator(node.data)) {
+		if (node.data && comparator(node.data)) {
 		  return node;
 		}
 		return node.next ? checkNext(node.next) : null;
@@ -70,7 +69,7 @@ class LinkedList<T>{
 	  }
   
 	  const addToArray = (node: treeNode<T>): T[] => {
-		array.push(node.data);
+		if(node.data)array.push(node.data);
 		return node.next ? addToArray(node.next) : array;
 	  };
 	  return addToArray(this.head);
