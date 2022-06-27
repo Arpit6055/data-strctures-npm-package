@@ -14,5 +14,8 @@
     "typescript": "^4.7.4"
   },
   "author": "Arpit <arpitsingh_1969@aitpune.edu.in>",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "@arpit6055/datastructures": "^0.0.1"
+  }
 }
