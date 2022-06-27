@@ -1,215 +1,110 @@
-/* Binary Search Tree */
+class BinarySearchTreeNode<T> {
+  data: T;
+  leftNode?: BinarySearchTreeNode<T>;
+  rightNode?: BinarySearchTreeNode<T>;
 
-class treeNode {
-  constructor(data: number, left = null, right = null) {
+  constructor(data: T) {
     this.data = data;
-    this.left = left;
-    this.right = right;
   }
-  public data: number;
-  public left: treeNode;
-  public right: treeNode;
 }
 
-export class BST {
-  public root: treeNode;
+export class BinarySearchTree<T> {
+  root?: BinarySearchTreeNode<T>;
+  // comparator: (a: T, b: T) => number;
+  comparator = (a: T, b: T)=> {
+    if (a < b) return -1;
+    if (a > b) return 1;
+    return 0;
+  }
   constructor() {
-    this.root = null;
+    
   }
-  public add(data: number): void {
-    const node = this.root;
-    if (node === null) {
-      this.root = new treeNode(data);
-      return;
-    } else {
-      const searchTree = function (node: treeNode): void | null {
-        if (data < node.data) {
-          if (node.left === null) {
-            node.left = new treeNode(data);
-            return;
-          } else if (node.left !== null) {
-            return searchTree(node.left);
-          }
-        } else if (data > node.data) {
-          if (node.right === null) {
-            node.right = new treeNode(data);
-            return;
-          } else if (node.right !== null) {
-            return searchTree(node.right);
-          }
+
+  insert(data: T): BinarySearchTreeNode<T> | undefined {
+    if (!this.root) {
+      this.root = new BinarySearchTreeNode(data);
+      return this.root;
+    }
+
+    let current = this.root;
+
+    while (true) {
+      if (this.comparator(data, current.data) === 1) {
+        if (current.rightNode) {
+          current = current.rightNode;
         } else {
-          return null;
+          current.rightNode = new BinarySearchTreeNode(data);
+          return current.rightNode;
         }
-      };
-      return searchTree(node);
-    }
-  }
-  public findMin(): number | null {
-    let current = this.root;
-    while (current.left !== null) {
-      current = current.left;
-    }
-    return current.data;
-  }
-  public findMax(): number | null {
-    let current = this.root;
-    while (current.right !== null) {
-      current = current.right;
-    }
-    return current.data;
-  }
-  find(data: number): treeNode | null {
-    let current = this.root;
-    while (current.data !== data) {
-      if (data < current.data) {
-        current = current.left;
       } else {
-        current = current.right;
-      }
-      if (current === null) {
-        return null;
+        if (current.leftNode) {
+          current = current.leftNode;
+        } else {
+          current.leftNode = new BinarySearchTreeNode(data);
+          return current.leftNode;
+        }
       }
     }
+  }
+
+  search(data: T): BinarySearchTreeNode<T> | undefined {
+    if (!this.root) return undefined;
+
+    let current = this.root;
+
+    while (this.comparator(data, current.data) !== 0) {
+      if (this.comparator(data, current.data) === 1) {
+        if (!current.rightNode) return;
+
+        current = current.rightNode;
+      } else {
+        if (!current.leftNode) return;
+
+        current = current.leftNode;
+      }
+    }
+
     return current;
   }
-  public isPresent(data: number): boolean {
-    let current = this.root;
-    while (current) {
-      if (data === current.data) {
-        return true;
-      }
-      if (data < current.data) {
-        current = current.left;
-      } else {
-        current = current.right;
-      }
-    }
-    return false;
-  }
-  public remove(data: number): void {
-    const removeNode = function (node, data) {
-      if (node == null) {
-        return null;
-      }
-      if (data == node.data) {
-        // node has no children
-        if (node.left == null && node.right == null) {
-          return null;
-        }
-        // node has no left child
-        if (node.left == null) {
-          return node.right;
-        }
-        // node has no right child
-        if (node.right == null) {
-          return node.left;
-        }
-        // node has two children
-        var tempNode = node.right;
-        while (tempNode.left !== null) {
-          tempNode = tempNode.left;
-        }
-        node.data = tempNode.data;
-        node.right = removeNode(node.right, tempNode.data);
-        return node;
-      } else if (data < node.data) {
-        node.left = removeNode(node.left, data);
-        return node;
-      } else {
-        node.right = removeNode(node.right, data);
-        return node;
-      }
-    };
-    this.root = removeNode(this.root, data);
-  }
-  public isBalanced(): boolean {
-    return this.findMinHeight() >= this.findMaxHeight() - 1;
-  }
-  public findMinHeight(node = this.root): number {
-    if (node == null) {
-      return -1;
-    }
-    let left = this.findMinHeight(node.left);
-    let right = this.findMinHeight(node.right);
-    if (left < right) {
-      return left + 1;
-    } else {
-      return right + 1;
-    }
-  }
-  public findMaxHeight(node = this.root): number {
-    if (node == null) {
-      return -1;
-    }
-    let left = this.findMaxHeight(node.left);
-    let right = this.findMaxHeight(node.right);
-    if (left > right) {
-      return left + 1;
-    } else {
-      return right + 1;
-    }
-  }
-  public inOrder(): Array<number> | null {
-    if (this.root == null) {
-      return null;
-    } else {
-      var result = new Array();
-      function traverseInOrder(node: treeNode): void {
-        node.left && traverseInOrder(node.left);
-        result.push(node.data);
-        node.right && traverseInOrder(node.right);
-      }
-      traverseInOrder(this.root);
-      return result;
-    }
-  }
-  public preOrder(): Array<number> | null {
-    if (this.root == null) {
-      return null;
-    } else {
-      var result = new Array();
-      function traversePreOrder(node) {
-        result.push(node.data);
-        node.left && traversePreOrder(node.left);
-        node.right && traversePreOrder(node.right);
-      }
-      traversePreOrder(this.root);
-      return result;
-    }
-  }
-  public postOrder(): Array<number> | number {
-    if (this.root == null) {
-      return null;
-    } else {
-      var result = new Array();
-      function traversePostOrder(node) {
-        node.left && traversePostOrder(node.left);
-        node.right && traversePostOrder(node.right);
-        result.push(node.data);
-      }
-      traversePostOrder(this.root);
-      return result;
+
+  inOrderTraversal(node: BinarySearchTreeNode<T> | undefined): void {
+    if (node) {
+      this.inOrderTraversal(node.leftNode);
+      console.log(node.data);
+      this.inOrderTraversal(node.rightNode);
     }
   }
 
-  public levelOrder(): Array<number> | null {
-    let result = [];
-    let Q = [];
-    if (this.root != null) {
-      Q.push(this.root);
-      while (Q.length > 0) {
-        let node = Q.shift();
-        result.push(node.data);
-        if (node.left != null) {
-          Q.push(node.left);
-        }
-        if (node.right != null) {
-          Q.push(node.right);
-        }
-      }
-      return result;
-    } else {
-      return null;
+  preOrderTraversal(node: BinarySearchTreeNode<T> | undefined): void {
+    if (node) {
+      console.log(node.data);
+      this.preOrderTraversal(node.leftNode);
+      this.preOrderTraversal(node.rightNode);
     }
   }
+
+  postOrderTraversal(node: BinarySearchTreeNode<T> | undefined): void {
+    if (node) {
+      this.postOrderTraversal(node.leftNode);
+      this.postOrderTraversal(node.rightNode);
+      console.log(node.data);
+    }
+  }
+
+
 }
+
+
+const bst = new BinarySearchTree();
+
+bst.insert(5);
+
+bst.insert(4);
+bst.insert(3);
+bst.insert(1);
+
+bst.insert(7);
+bst.insert(6);
+bst.insert(8);
+
+bst.inOrderTraversal(bst.root);
