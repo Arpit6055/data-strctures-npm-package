@@ -1,4 +1,4 @@
-class Stack<T> {
+export class Stack<T> {
     private storage: T[] = [];
   
     constructor(private capacity: number = Infinity) {}
@@ -23,6 +23,3 @@ class Stack<T> {
     }
   }
   
-
-
-export {Stack};

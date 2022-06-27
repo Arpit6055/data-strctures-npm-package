@@ -1,4 +1,4 @@
-class Queue<T>{
+export class Queue<T>{
     private storage: T[] = [];
   
     constructor(private capacity: number = Infinity) {}
@@ -17,6 +17,3 @@ class Queue<T>{
     }
   }
   
-
-
-export {Queue}

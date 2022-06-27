@@ -7,7 +7,7 @@ class treeNode<T> {
 	}
 }
 
-class LinkedList<T>{
+export class LinkedList<T>{
 	private head: treeNode<T> | null = null;
   
 	public insertAtEnd(data: T): treeNode<T> {
@@ -80,6 +80,3 @@ class LinkedList<T>{
 	}
   }
   
-
-
-export {LinkedList}
