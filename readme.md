@@ -10,7 +10,7 @@ Install the npm package [npm link](https://www.npmjs.com/package/@arpit6055/data
 ### Usage
 
 ```sh
-$ npm i @arpit6055/data_structure
+$ npm i @arpit6055/datastructures
 ```
 
 
@@ -24,7 +24,7 @@ $ npm i @arpit6055/data_structure
 ## Usage/Examples
 
 ```javascript
-const {BinarySearchTree,LinkedList, Queue,Stack} = require('@arpit6055/data_structure');
+const {BinarySearchTree,LinkedList, Queue,Stack} = require('@arpit6055/datastructures');
 
 ////////////////////////////////////////////////////////////////
 // Binary search tree
