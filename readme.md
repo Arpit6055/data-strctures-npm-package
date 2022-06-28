@@ -3,7 +3,7 @@
 This is npm data structures package for ease of users for performing complex
 problems
 
-Install the npm package [npm link](https://www.npmjs.com/package/@arpit6055/datastructures)
+Install the npm package [npm link](https://www.npmjs.com/package/@arpit6055/datastructure)
 
 ### Version: 0.0.1
 
@@ -24,7 +24,7 @@ $ npm i @arpit6055/datastructures
 ## Usage/Examples
 
 ```javascript
-const {BinarySearchTree,LinkedList, Queue,Stack} = require('@arpit6055/datastructures');
+const {BinarySearchTree,LinkedList, Queue,Stack} = require('@arpit6055/datastructure');
 
 ////////////////////////////////////////////////////////////////
 // Binary search tree
