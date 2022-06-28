@@ -3,14 +3,14 @@
 This is npm data structures package for ease of users for performing complex
 problems
 
-Install the npm package [npm link](https://www.npmjs.com/package/@arpit6055/datastructures)
+Install the npm package [npm link](https://www.npmjs.com/package/@arpit6055/datastructure)
 
 ### Version: 0.0.1
 
 ### Usage
 
 ```sh
-$ npm i @arpit6055/datastructures
+$ npm i @arpit6055/datastructure
 ```
 
 
