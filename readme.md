@@ -10,7 +10,7 @@ Install the npm package [npm link](https://www.npmjs.com/package/@arpit6055/data
 ### Usage
 
 ```sh
-$ npm i @arpit6055/datastructures
+$ npm i @arpit6055/datastructure
 ```
 
 
