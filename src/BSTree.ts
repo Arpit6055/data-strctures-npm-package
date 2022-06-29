@@ -11,13 +11,13 @@ class BinarySearchTreeNode<T> {
 export class BinarySearchTree<T> {
   root?: BinarySearchTreeNode<T>;
   // comparator: (a: T, b: T) => number;
-  comparator = (a: T, b: T)=> {
+  comparator = (a: T, b: T) => {
     if (a < b) return -1;
     if (a > b) return 1;
     return 0;
   }
   constructor() {
-    
+
   }
 
   insert(data: T): BinarySearchTreeNode<T> | undefined {
@@ -71,7 +71,7 @@ export class BinarySearchTree<T> {
     let visited = new Array<T>();
     let current = this.root;
     if (!current) return visited;
-    let traverse = (node :BinarySearchTreeNode<T>) : void => {
+    let traverse = (node: BinarySearchTreeNode<T>): void => {
       if (node.leftNode) traverse(node.leftNode);
       visited.push(node.data);
       if (node.rightNode) traverse(node.rightNode);
@@ -83,7 +83,7 @@ export class BinarySearchTree<T> {
     let visited = new Array<T>();
     let current = this.root;
     if (!current) return visited;
-    let traverse = (node :BinarySearchTreeNode<T>) : void => {
+    let traverse = (node: BinarySearchTreeNode<T>): void => {
       visited.push(node.data);
       if (node.leftNode) traverse(node.leftNode);
       if (node.rightNode) traverse(node.rightNode);
@@ -95,7 +95,7 @@ export class BinarySearchTree<T> {
     let visited = new Array<T>();
     let current = this.root;
     if (!current) return visited;
-    let traverse = (node :BinarySearchTreeNode<T>) : void => {
+    let traverse = (node: BinarySearchTreeNode<T>): void => {
       if (node.leftNode) traverse(node.leftNode);
       if (node.rightNode) traverse(node.rightNode);
       visited.push(node.data);
@@ -112,16 +112,43 @@ export class BinarySearchTree<T> {
       let current = queue.shift();
       if(!current) return visited;
       visited.push(current.data);
-      if (current.leftNode !== null) queue.push(current.leftNode);
-      if (current.rightNode !== null) queue.push(current.rightNode);
+      if (current.leftNode) queue.push(current.leftNode);
+      if (current.rightNode) queue.push(current.rightNode);
     }
   }
+  delete(key: T): void {
+    this.deleteNode(this.root, key)
+  }
+  private deleteNode(root: BinarySearchTreeNode<T>, key: T): BinarySearchTreeNode<T> | null {
+    if (!root) {
+      return null;
+    }
+    if (key < root.data) {
+      root.leftNode = this.deleteNode(root.leftNode, key);
+    } else if (key > root.data) {
+      root.rightNode = this.deleteNode(root.rightNode, key);
+    } else {
+      if (!root.leftNode) {
+        return root.rightNode;
+      } else if (!root.rightNode) {
+        return root.leftNode;
+      } else {
+        root.data = this.getMin(root.rightNode);
+        root.rightNode = this.deleteNode(root.rightNode, root.data);
+      }
+    }
+    return root;
+  };
 
-
+  private getMin(root: BinarySearchTreeNode<T>): T {
+    while (root.leftNode) {
+      root = root.leftNode;
+    }
+    return root.data;
+  };
 }
 
 const bst = new BinarySearchTree();
-
 bst.insert(5);//insert into the binary tree
 bst.insert(2);
 bst.insert(3);
@@ -129,6 +156,8 @@ bst.insert(1);
 bst.insert(7);
 bst.insert(6);
 bst.insert(8);
-
-let arr = bst.postOrderTraversal()
+let arr1 = bst.BFS()
+console.log(arr1);
+bst.delete(1);
+let arr = bst.BFS()
 console.log(arr);
