@@ -3,14 +3,14 @@
 This is npm data structures package for ease of users for performing complex
 problems
 
-Install the npm package [npm link](https://www.npmjs.com/package/@arpit6055/datastructure)
+Install the npm package [npm link](https://www.npmjs.com/package/@arpitsingh6055/datastructure)
 
-### Version: 1.0.3
+### Version: 1.0.1
 
 ### Usage
 
 ```sh
-$ npm i @arpit6055/datastructure
+$ npm i @arpitsingh6055/datastructure
 ```
 
 
@@ -24,12 +24,11 @@ $ npm i @arpit6055/datastructure
 ## Usage/Examples
 
 ```javascript
-const {BinarySearchTree,LinkedList, Queue,Stack} = require('@arpit6055/datastructure');
+const {BinarySearchTree,LinkedList, Queue,Stack} = require('@arpitsingh6055/datastructure');
 
 ///////////////////////////////////////////////////////////////////////////////////////
 // Binary search tree
 const bst = new BinarySearchTree();
-
 bst.insert(5);//insert into the binary tree
 bst.insert(2);
 bst.insert(3);
@@ -37,24 +36,29 @@ bst.insert(1);
 bst.insert(7);
 bst.insert(6);
 bst.insert(8);
-
 let inOrd = bst.inOrderTraversal();//returns an array of the inOrder of the binary tree
 let postOrd = bst.postOrderTraversal();
 let preOrd = bst.preOrderTraversal();
+let treeBfs = bst.BFS();
+console.log({inOrd});
+console.log({postOrd});
+console.log({preOrd});
+console.log({treeBfs});
+
+
 
 ///////////////////////////////////////////////////////////////////////////////////////
 // Link list
-
 const ll = new LinkedList();
-
 ll.insertAtEnd(4);// insert at the ending of the linkedlist
 ll.insertInBegin(5); //insert at the begining of the linkedlist
 const arr = ll.traverse() //return a array of all values in Linklist
 console.log({arr}); // output:  [ 5, 4 ]
 
+
+
 ///////////////////////////////////////////////////////////////////////////////////////
 //queue
-
 const q = new Queue(6); // optional paramter here represents the max size allowed for the queue
 q.enqueue(20) // addidtion to the queue
 q.enqueue(4)
