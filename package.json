@@ -1,6 +1,6 @@
 {
   "name": "@arpit6055/datastructure",
-  "version": "1.0.6",
+  "version": "1.0.5",
   "description": "TypeScript Data structure package",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
