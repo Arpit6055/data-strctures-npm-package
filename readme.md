@@ -5,7 +5,7 @@ problems
 
 Install the npm package [npm link](https://www.npmjs.com/package/@arpit6055/datastructure)
 
-### Version: 0.0.1
+### Version: 1.0.3
 
 ### Usage
 
@@ -38,16 +38,9 @@ bst.insert(7);
 bst.insert(6);
 bst.insert(8);
 
-bst.inOrderTraversal(bst.root);//log the inOrder of the binary tree
-//output in console :
-//  1
-//  2
-//  3
-//  5
-//  6
-//  7
-//  8
-
+let inOrd = bst.inOrderTraversal();//returns an array of the inOrder of the binary tree
+let postOrd = bst.postOrderTraversal();
+let preOrd = bst.preOrderTraversal();
 
 ///////////////////////////////////////////////////////////////////////////////////////
 // Link list
