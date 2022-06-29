@@ -67,29 +67,68 @@ export class BinarySearchTree<T> {
     return current;
   }
 
-  inOrderTraversal(node: BinarySearchTreeNode<T> | undefined): void {
-    if (node) {
-      this.inOrderTraversal(node.leftNode);
-      console.log(node.data);
-      this.inOrderTraversal(node.rightNode);
-    }
+  inOrderTraversal(): T[] {
+    let visited = new Array<T>();
+    let current = this.root;
+    if (!current) return visited;
+    let traverse = (node :BinarySearchTreeNode<T>) : void => {
+      if (node.leftNode) traverse(node.leftNode);
+      visited.push(node.data);
+      if (node.rightNode) traverse(node.rightNode);
+    };
+    traverse(current);
+    return visited;
+  }
+  preOrderTraversal(): T[] {
+    let visited = new Array<T>();
+    let current = this.root;
+    if (!current) return visited;
+    let traverse = (node :BinarySearchTreeNode<T>) : void => {
+      visited.push(node.data);
+      if (node.leftNode) traverse(node.leftNode);
+      if (node.rightNode) traverse(node.rightNode);
+    };
+    traverse(current);
+    return visited;
+  }
+  postOrderTraversal(): T[] {
+    let visited = new Array<T>();
+    let current = this.root;
+    if (!current) return visited;
+    let traverse = (node :BinarySearchTreeNode<T>) : void => {
+      if (node.leftNode) traverse(node.leftNode);
+      if (node.rightNode) traverse(node.rightNode);
+      visited.push(node.data);
+    };
+    traverse(current);
+    return visited;
   }
 
-  preOrderTraversal(node: BinarySearchTreeNode<T> | undefined): void {
-    if (node) {
-      console.log(node.data);
-      this.preOrderTraversal(node.leftNode);
-      this.preOrderTraversal(node.rightNode);
-    }
-  }
-
-  postOrderTraversal(node: BinarySearchTreeNode<T> | undefined): void {
-    if (node) {
-      this.postOrderTraversal(node.leftNode);
-      this.postOrderTraversal(node.rightNode);
-      console.log(node.data);
+  BFS(): T[] {
+    let queue = new Array<BinarySearchTreeNode<T>>();
+    let visited = new Array<T>();
+    queue.push(this.root);
+    while (1) {
+      let current = queue.shift();
+      if(!current) return visited;
+      visited.push(current.data);
+      if (current.leftNode !== null) queue.push(current.leftNode);
+      if (current.rightNode !== null) queue.push(current.rightNode);
     }
   }
 
 
 }
+
+const bst = new BinarySearchTree();
+
+bst.insert(5);//insert into the binary tree
+bst.insert(2);
+bst.insert(3);
+bst.insert(1);
+bst.insert(7);
+bst.insert(6);
+bst.insert(8);
+
+let arr = bst.postOrderTraversal()
+console.log(arr);
