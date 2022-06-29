@@ -5,7 +5,7 @@ problems
 
 Install the npm package [npm link](https://www.npmjs.com/package/@arpit6055/datastructure)
 
-### Version: 1.0.3
+### Version: 1.0.5
 
 ### Usage
 
@@ -41,10 +41,9 @@ bst.insert(8);
 let inOrd = bst.inOrderTraversal();//returns an array of the inOrder of the binary tree
 let postOrd = bst.postOrderTraversal();
 let preOrd = bst.preOrderTraversal();
-
+let trrBfs = bts.
 ///////////////////////////////////////////////////////////////////////////////////////
 // Link list
-
 const ll = new LinkedList();
 
 ll.insertAtEnd(4);// insert at the ending of the linkedlist
@@ -54,7 +53,6 @@ console.log({arr}); // output:  [ 5, 4 ]
 
 ///////////////////////////////////////////////////////////////////////////////////////
 //queue
-
 const q = new Queue(6); // optional paramter here represents the max size allowed for the queue
 q.enqueue(20) // addidtion to the queue
 q.enqueue(4)
