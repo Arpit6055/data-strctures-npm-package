@@ -1,6 +1,6 @@
 {
   "name": "@arpit6055/datastructure",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "TypeScript Data structure package",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
@@ -15,5 +15,14 @@
   },
   "author": "Arpit <arpitsingh_1969@aitpune.edu.in>",
   "license": "MIT",
-  "keywords": ["Data structures", "datastructure", "DSA","Linklist","Tree","Binary search tree", "stack","queue"]
+  "keywords": [
+    "Data structures",
+    "datastructure",
+    "DSA",
+    "Linklist",
+    "Tree",
+    "Binary search tree",
+    "stack",
+    "queue"
+  ]
 }
