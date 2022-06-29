@@ -10,8 +10,9 @@ export declare class BinarySearchTree<T> {
     constructor();
     insert(data: T): BinarySearchTreeNode<T> | undefined;
     search(data: T): BinarySearchTreeNode<T> | undefined;
-    inOrderTraversal(node: BinarySearchTreeNode<T> | undefined): void;
-    preOrderTraversal(node: BinarySearchTreeNode<T> | undefined): void;
-    postOrderTraversal(node: BinarySearchTreeNode<T> | undefined): void;
+    inOrderTraversal(): T[];
+    preOrderTraversal(): T[];
+    postOrderTraversal(): T[];
+    BFS(): T[];
 }
 export {};
