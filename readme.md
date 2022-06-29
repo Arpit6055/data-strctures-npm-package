@@ -5,7 +5,7 @@ problems
 
 Install the npm package [npm link](https://www.npmjs.com/package/@arpit6055/datastructure)
 
-### Version: 1.0.5
+### Version: 1.0.6
 
 ### Usage
 
