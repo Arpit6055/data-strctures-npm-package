@@ -10,10 +10,20 @@
     "build": "tsc -p ."
   },
   "devDependencies": {
+    "@arpit6055/datastructure": "^1.0.1",
     "ts-node": "^10.8.1",
     "typescript": "^4.7.4"
   },
   "author": "Arpit <arpitsingh_1969@aitpune.edu.in>",
   "license": "MIT",
-  "keywords": ["Data structures", "datastructure", "DSA","Linklist","Tree","Binary search tree", "stack","queue"]
+  "keywords": [
+    "Data structures",
+    "datastructure",
+    "DSA",
+    "Linklist",
+    "Tree",
+    "Binary search tree",
+    "stack",
+    "queue"
+  ]
 }
