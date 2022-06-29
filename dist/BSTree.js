@@ -62,28 +62,77 @@ var BinarySearchTree = (function () {
         }
         return current;
     };
-    BinarySearchTree.prototype.inOrderTraversal = function (node) {
-        if (node) {
-            this.inOrderTraversal(node.leftNode);
-            console.log(node.data);
-            this.inOrderTraversal(node.rightNode);
-        }
+    BinarySearchTree.prototype.inOrderTraversal = function () {
+        var visited = new Array();
+        var current = this.root;
+        if (!current)
+            return visited;
+        var traverse = function (node) {
+            if (node.leftNode)
+                traverse(node.leftNode);
+            visited.push(node.data);
+            if (node.rightNode)
+                traverse(node.rightNode);
+        };
+        traverse(current);
+        return visited;
     };
-    BinarySearchTree.prototype.preOrderTraversal = function (node) {
-        if (node) {
-            console.log(node.data);
-            this.preOrderTraversal(node.leftNode);
-            this.preOrderTraversal(node.rightNode);
-        }
+    BinarySearchTree.prototype.preOrderTraversal = function () {
+        var visited = new Array();
+        var current = this.root;
+        if (!current)
+            return visited;
+        var traverse = function (node) {
+            visited.push(node.data);
+            if (node.leftNode)
+                traverse(node.leftNode);
+            if (node.rightNode)
+                traverse(node.rightNode);
+        };
+        traverse(current);
+        return visited;
     };
-    BinarySearchTree.prototype.postOrderTraversal = function (node) {
-        if (node) {
-            this.postOrderTraversal(node.leftNode);
-            this.postOrderTraversal(node.rightNode);
-            console.log(node.data);
+    BinarySearchTree.prototype.postOrderTraversal = function () {
+        var visited = new Array();
+        var current = this.root;
+        if (!current)
+            return visited;
+        var traverse = function (node) {
+            if (node.leftNode)
+                traverse(node.leftNode);
+            if (node.rightNode)
+                traverse(node.rightNode);
+            visited.push(node.data);
+        };
+        traverse(current);
+        return visited;
+    };
+    BinarySearchTree.prototype.BFS = function () {
+        var queue = new Array();
+        var visited = new Array();
+        queue.push(this.root);
+        while (1) {
+            var current = queue.shift();
+            if (!current)
+                return visited;
+            visited.push(current.data);
+            if (current.leftNode !== null)
+                queue.push(current.leftNode);
+            if (current.rightNode !== null)
+                queue.push(current.rightNode);
         }
     };
     return BinarySearchTree;
 }());
 exports.BinarySearchTree = BinarySearchTree;
+var bst = new BinarySearchTree();
+bst.insert(5);
+bst.insert(2);
+bst.insert(3);
+bst.insert(1);
+bst.insert(7);
+bst.insert(6);
+bst.insert(8);
+var arr = bst.postOrderTraversal();
+console.log(arr);
 //# sourceMappingURL=BSTree.js.map
