@@ -3,7 +3,7 @@
 This is npm data structures package for ease of users for performing complex
 problems
 
-Install the npm package [npm link](https://www.npmjs.com/package/@arpit6055/datastructure)
+Install the npm package [npm link](https://www.npmjs.com/package/@arpitsingh6055/datastructure)
 
 ### Version: 1.0.0
 
