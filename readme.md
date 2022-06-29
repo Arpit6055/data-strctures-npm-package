@@ -24,7 +24,7 @@ $ npm i @arpit6055/datastructure
 ## Usage/Examples
 
 ```javascript
-const {BinarySearchTree,LinkedList, Queue,Stack} = require('@arpit6055/datastructure');
+const {BinarySearchTree,LinkedList, Queue,Stack} = require('@arpitsingh6055/datastructure');
 
 ///////////////////////////////////////////////////////////////////////////////////////
 // Binary search tree
