@@ -5,12 +5,12 @@ problems
 
 Install the npm package [npm link](https://www.npmjs.com/package/@arpitsingh6055/datastructure)
 
-### Version: 1.0.0
+### Version: 1.0.1
 
 ### Usage
 
 ```sh
-$ npm i @arpit6055/datastructure
+$ npm i @arpitsingh6055/datastructure
 ```
 
 
