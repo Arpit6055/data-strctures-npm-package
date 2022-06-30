@@ -36,14 +36,11 @@ bst.insert(1);
 bst.insert(7);
 bst.insert(6);
 bst.insert(8);
-let inOrd = bst.inOrderTraversal();//returns an array of the inOrder of the binary tree
-let postOrd = bst.postOrderTraversal();
-let preOrd = bst.preOrderTraversal();
-let treeBfs = bst.BFS();
-console.log({inOrd});
-console.log({postOrd});
-console.log({preOrd});
-console.log({treeBfs});
+let bst1 = bst.BFS();
+console.log({bst1});
+bst.delete(3); //delete the node from the binary tree
+let bst2 = bst.BFS();
+console.log({bst2});
 
 
 
