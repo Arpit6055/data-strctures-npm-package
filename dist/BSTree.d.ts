@@ -14,5 +14,8 @@ export declare class BinarySearchTree<T> {
     preOrderTraversal(): T[];
     postOrderTraversal(): T[];
     BFS(): T[];
+    delete(key: T): void;
+    private deleteNode;
+    private getMin;
 }
 export {};

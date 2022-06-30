@@ -116,23 +116,48 @@ var BinarySearchTree = (function () {
             if (!current)
                 return visited;
             visited.push(current.data);
-            if (current.leftNode !== null)
+            if (current.leftNode)
                 queue.push(current.leftNode);
-            if (current.rightNode !== null)
+            if (current.rightNode)
                 queue.push(current.rightNode);
         }
     };
+    BinarySearchTree.prototype["delete"] = function (key) {
+        this.deleteNode(this.root, key);
+    };
+    BinarySearchTree.prototype.deleteNode = function (root, key) {
+        if (!root) {
+            return null;
+        }
+        if (key < root.data) {
+            root.leftNode = this.deleteNode(root.leftNode, key);
+        }
+        else if (key > root.data) {
+            root.rightNode = this.deleteNode(root.rightNode, key);
+        }
+        else {
+            if (!root.leftNode) {
+                return root.rightNode;
+            }
+            else if (!root.rightNode) {
+                return root.leftNode;
+            }
+            else {
+                root.data = this.getMin(root.rightNode);
+                root.rightNode = this.deleteNode(root.rightNode, root.data);
+            }
+        }
+        return root;
+    };
+    ;
+    BinarySearchTree.prototype.getMin = function (root) {
+        while (root.leftNode) {
+            root = root.leftNode;
+        }
+        return root.data;
+    };
+    ;
     return BinarySearchTree;
 }());
 exports.BinarySearchTree = BinarySearchTree;
-var bst = new BinarySearchTree();
-bst.insert(5);
-bst.insert(2);
-bst.insert(3);
-bst.insert(1);
-bst.insert(7);
-bst.insert(6);
-bst.insert(8);
-var arr = bst.postOrderTraversal();
-console.log(arr);
 //# sourceMappingURL=BSTree.js.map
